@@ -1,9 +1,3 @@
-<?php
- require "config.php";
-  $query = "select * from lead_data";
-  $result = mysqli_query($connection, $query);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
