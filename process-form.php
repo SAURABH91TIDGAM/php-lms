@@ -25,7 +25,6 @@ require "config.php";
 $sql = "INSERT INTO lead_data(Lead_Name, Contact_number, Address, City, State_name, Employment_type, Loan_status)
         VALUES (?,?,?,?,?,?,?)";
 
-//var_dump($name,$contact_number,$address,$city,$state,$employment_status,$Loan_status);
 
 $stmt =mysqli_stmt_init($connection);
 
