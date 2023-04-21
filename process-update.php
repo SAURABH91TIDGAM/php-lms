@@ -7,26 +7,31 @@ $num=$_GET['update_id'];
 //echo $num;
 
 function validating($phone){
-    if(! preg_match('/^[0-9]{10}+$/', $phone))
+    if(preg_match('/^[0-9]{10}+$/', $phone))
     {
-        die("Invalid Phone Number");
+        return True;
+    }
+    else{
+        return false;
     }
 }
 
 
 $name = $_POST['name'];
 $contact_number = filter_input(INPUT_POST,"contact_number",FILTER_VALIDATE_INT);
-validating($contact_number);
+$valid = validating($contact_number);
 
 $address = $_POST['address'];
 $city = $_POST['city'];
 $state = $_POST['state'];
 $employment_status = $_POST['employment_type'];
 $Loan_status = $_POST['existing_loan'];
-//
+
 //echo $num;
-//
-$sql_query = "UPDATE lead_data SET Lead_name='$name', Contact_number='$contact_number', Address='$address', City='$city',
+
+if ($valid){
+
+    $sql_query = "UPDATE lead_data SET Lead_name='$name', Contact_number='$contact_number', Address='$address', City='$city',
                      State_name='$state',Employment_type='$employment_status', Loan_status='$Loan_status' where id='$num'";
 
 //var_dump($name,$contact_number,$address,$city,$state,$employment_status,$Loan_status);
@@ -40,18 +45,25 @@ $sql_query = "UPDATE lead_data SET Lead_name='$name', Contact_number='$contact_n
 //mysqli_stmt_bind_param($stmt, "sisssss",$name,$contact_number, $address, $city, $state, $employment_status, $Loan_status);
 //
 //mysqli_stmt_execute($stmt);
-$data = mysqli_query($connection, $sql_query);
+    $data = mysqli_query($connection, $sql_query);
 
-if($data){
-    echo "updated successfully";
-}
-else{
-    echo "failed";
-}
+    if($data){
+        echo "updated successfully";
+    }
+    else{
+        echo "failed";
+    }
 
-header('location:index.php');
+    header('location:index.php');
 
 //echo "updated successfully";
+
+}
+else{
+    echo "you provided invalid phone number. ";
+    echo "<a href='update.php?update_id=$num'>GO BACK</a>";
+}
+
 
 
 

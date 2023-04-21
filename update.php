@@ -88,7 +88,7 @@ $loan=$row['Loan_status'];
     <br>
 
     <button type="update">Update</ah></button>
-    <button type="reset">Reset</button>
+
 
 </form>
 
