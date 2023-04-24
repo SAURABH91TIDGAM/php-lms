@@ -13,7 +13,7 @@ if (!$connection)
     $sql_query = "CREATE DATABASE myapp";
     if (mysqli_query($connection, $sql_query))
     {
-        $sql_query = "CREATE TABLE Persons (id int,Lead_name text,Contact_number bigint,Address varchar(255),City text,State_name text,Employment_type text,Loan_status text)";
+        $sql_query = "CREATE TABLE Persons (id INT,Lead_name TEXT,Contact_number BIGINT,Address VARCHAR(255),City TEXT,State_name TEXT,Employment_type TEXT,Loan_status TEXT)";
         if(!mysqli_query($connection,$sql_query)){
             echo "error creating table".mysqli_error();
         }
