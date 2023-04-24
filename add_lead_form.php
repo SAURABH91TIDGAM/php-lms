@@ -8,24 +8,57 @@
 <h1>Lead Management  System</h1>
 <h2>form to Add lead</h2>
 
-     <form action="process-form.php"  method="post">
+
+<?php
+     require 'config.php';
+
+     $action_destination = "process-form.php";
+
+     if(isset($_GET["update_id"]))
+     {
+          // we now know that we have to fetch the data from the database
+          // for the respective ID parameter in the query URL
+
+          $lead_id = $_GET["update_id"];
+
+          $sql_query = "select * from lead_data where id='$lead_id'";
+          $result=mysqli_query($connection, $sql_query);
+          $row=mysqli_fetch_assoc($result);
+
+          $name=$row['Lead_name'];
+          $number=$row['Contact_number'];
+          $address=$row['Address'];
+          $city=$row['City'];
+          $SN=$row['State_name'];
+          $ET=$row['Employment_type'];
+          $loan=$row['Loan_status'];
+
+          $action_destination = "process-update.php";
+
+     }
+?>
+
+     <form action="<?php echo $action_destination; ?>"  method="post">
           <div>
                <label for="name"> Full Name </label>
-               <input type="text" id="name" name="name">
+               <input type="text" id="name" name="name" value="<?php echo $name; ?>">
           </div>
           <br>
           <div>
                <label for="contact number">Mobile Number</label>
-               <input type="number" id="contact number" name="contact_number">
+               <!-- TODO: add php value to html tag -->
+               <input type="number" id="contact number" name="contact_number"> 
           </div>
           <br>
           <div>
                <label for="address"> Address </label>
+               <!-- TODO: add php value to html tag -->
                <textarea id="address" name="address"></textarea>
           </div>
           <br>
           <div>
                <label for="city"> City </label>
+               <!-- TODO: add php value to html tag -->
                <select id="city" name="city">
                     <option value="delhi">Delhi</option>
                     <option value="mumbai">Mumbai</option>
@@ -39,6 +72,7 @@
                </select>
 
                <label for="state">State</label>
+               <!-- TODO: add php value to html tag -->
                <select id="state" name="state">
                     <option value="delhi">Delhi</option>
                     <option value="maharashtra">Maharashtra</option>
@@ -53,6 +87,7 @@
           <br>
           <div>
               <legend>Employment Type</legend>
+              <!-- TODO: add php value to html tag -->
                <label><input type="radio" value="salaried" name="employment_type" />Salaried</label>
                <label><input type="radio" value="Self employed" name="employment_type" />Self employed</label>
                <label><input type="radio" value="unemployed" name="employment_type" />Not employed</label>
@@ -62,6 +97,7 @@
           <div>
 
                <legend>Existing Loan</legend>
+               <!-- TODO: add php value to html tag -->
                <label><input type="radio" name="existing_loan" value="no">no</label><br>
                <label><input type="radio" name="existing_loan" value="yes">yes</label><br>
 
@@ -113,8 +149,8 @@
             <td>$state</td>
             <td>$employment_status</td>
             <td>$existing_loan</td>
-            <td><button><a href='update.php?update_id=$id'>Update</a></button></td>
-            <td><button><a href='delete.php?delete_id=$id'>Delete</a></button></td>
+            <td><button><a href='index.php?update_id=$id'>Update</a></button></td>
+            <td><button><a href='index.php?delete_id=$id'>Delete</a></button></td>
             </tr>
             ";
           }
