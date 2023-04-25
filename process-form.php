@@ -27,30 +27,7 @@ $Loan_status = $_POST['existing_loan'];
 
 if(isset($_GET['id']))
 {
-    if ($valid_number)
-    {
-        $sql_query = "UPDATE lead_data SET Lead_name='$name', Contact_number='$contact_number', Address='$address', City='$city',
-                     State_name='$state',Employment_type='$employment_status', Loan_status='$Loan_status' where id='$num'";
 
-        $data = mysqli_query($connection, $sql_query);
-
-        if($data)
-        {
-            echo "updated successfully";
-        }
-        else
-        {
-            echo "failed";
-        }
-
-        header('location:index.php');
-        echo "updated successfully";
-    }
-    else
-    {
-        echo "you provided invalid phone number. ";
-        echo "<a href='index.php?update_id=$num'>GO BACK</a>";
-    }
     if ($valid_number)
     {
         $sql_query = "UPDATE lead_data SET Lead_name='$name', Contact_number='$contact_number', Address='$address', City='$city',
