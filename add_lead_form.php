@@ -69,27 +69,53 @@ else{
      <div>
           <label for="city"> City </label>
           <select id="city" name="city">
-               <option value="delhi"<?php if($city ==='delhi'){ echo "selected";} ?>>Delhi</option>
-               <option value="mumbai" <?php if($city ==='mumbai'){ echo "selected";} ?>>Mumbai</option>
-               <option value="chennai"<?php if($city ==='chennai'){ echo "selected";} ?>>Chennai</option>
-               <option value="kolkata"<?php if($city ==='kolkata'){ echo "selected";} ?>>Kolkata</option>
-               <option value="gurugram"<?php if($city ==='gurugram'){ echo "selected";} ?>>Gurugram</option>
-               <option value="pune"<?php if($city ==='pune'){ echo "selected";} ?>>Pune</option>
-               <option value="bengaluru"<?php if($city ==='bengaluru'){ echo "selected";} ?>>Bengaluru</option>
-               <option value="ahemdabad"<?php if($city ==='ahemdabad'){ echo "selected";} ?>>Ahemdabad</option>
-               <option value="nagpur"<?php if($city ==='nagpur'){ echo "selected";} ?>>Nagpur</option>
+               <?php $sql_query = "SELECT DISTINCT City FROM lead_data";
+               $result = mysqli_query($connection, $sql_query);
+               if(mysqli_num_rows($result) > 0)
+               {
+                    $options = mysqli_fetch_all($result, MYSQLI_ASSOC);
+               }
+               foreach ($options as $option)
+               {?>
+
+                    <option><?php echo $option['City']; ?> </option>
+                    <?php
+               }
+               ?>
+<!--               <option value="delhi"--><?php //if($city ==='delhi'){ echo "selected";} ?><!-->Delhi</option>-->
+<!--               <option value="mumbai" --><?php //if($city ==='mumbai'){ echo "selected";} ?><!-->Mumbai</option>-->
+<!--               <option value="chennai"--><?php //if($city ==='chennai'){ echo "selected";} ?><!-->Chennai</option>-->
+<!--               <option value="kolkata"--><?php //if($city ==='kolkata'){ echo "selected";} ?><!-->Kolkata</option>-->
+<!--               <option value="gurugram"--><?php //if($city ==='gurugram'){ echo "selected";} ?><!-->Gurugram</option>-->
+<!--               <option value="pune"--><?php //if($city ==='pune'){ echo "selected";} ?><!-->Pune</option>-->
+<!--               <option value="bengaluru"--><?php //if($city ==='bengaluru'){ echo "selected";} ?><!-->Bengaluru</option>-->
+<!--               <option value="ahemdabad"--><?php //if($city ==='ahemdabad'){ echo "selected";} ?><!-->Ahemdabad</option>-->
+<!--               <option value="nagpur"--><?php //if($city ==='nagpur'){ echo "selected";} ?><!-->Nagpur</option>-->
           </select>
      </div>
      <div>
           <label for="state">State</label>
           <select id="state" name="state">
-               <option value="delhi"<?php if($SN ==='delhi'){ echo "selected";} ?>>Delhi</option>
-               <option value="maharashtra"<?php if($SN ==='maharashtra'){ echo "selected";} ?>>Maharashtra</option>
-               <option value="tamil nadu"<?php if($SN ==='tamil nadu'){ echo "selected";} ?>>Tamil Nadu</option>
-               <option value="west bengal"<?php if($SN ==='west bengal'){ echo "selected";} ?>>west bengal</option>
-               <option value="haryana"<?php if($SN ==='haryana'){ echo "selected";} ?>>Haryana</option>
-               <option value="karnataka"<?php if($SN ==='karnataka'){ echo "selected";} ?>>Karnataka</option>
-               <option value="Gujarat"<?php if($SN ==='Gujarat'){ echo "selected";} ?>>Gujarat</option>
+               <?php $sql_query = "SELECT DISTINCT State_name FROM lead_data";
+               $result = mysqli_query($connection, $sql_query);
+               if(mysqli_num_rows($result) > 0)
+               {
+                    $options = mysqli_fetch_all($result, MYSQLI_ASSOC);
+               }
+               foreach ($options as $option)
+               {?>
+
+                    <option><?php echo $option['State_name']; ?> </option>
+                    <?php
+               }
+               ?>
+<!--               <option value="delhi"--><?php //if($SN ==='delhi'){ echo "selected";} ?><!-->Delhi</option>-->
+<!--               <option value="maharashtra"--><?php //if($SN ==='maharashtra'){ echo "selected";} ?><!-->Maharashtra</option>-->
+<!--               <option value="tamil nadu"--><?php //if($SN ==='tamil nadu'){ echo "selected";} ?><!-->Tamil Nadu</option>-->
+<!--               <option value="west bengal"--><?php //if($SN ==='west bengal'){ echo "selected";} ?><!-->west bengal</option>-->
+<!--               <option value="haryana"--><?php //if($SN ==='haryana'){ echo "selected";} ?><!-->Haryana</option>-->
+<!--               <option value="karnataka"--><?php //if($SN ==='karnataka'){ echo "selected";} ?><!-->Karnataka</option>-->
+<!--               <option value="Gujarat"--><?php //if($SN ==='Gujarat'){ echo "selected";} ?><!-->Gujarat</option>-->
           </select>
      </div><br>
      <div>
