@@ -133,6 +133,7 @@ else{
      </div><br>
 
      <button type="submit">save</ah></button>
+     <button><a href='logout.php' class="btn btn-danger ml-3">Sign Out</a></button>
 
 
 
