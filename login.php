@@ -65,9 +65,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     mysqli_stmt_bind_result($stmt, $username, $hashed_password);
                     while ($RESULT = mysqli_stmt_fetch($stmt))
                     {
-                        printf("%s (%s)\n", $username, $password);
-
-                        echo "mysqli_stmt_fetch: ".$RESULT;
+//                        printf("%s (%s)\n", $username, $password);
+//
+//                        echo "mysqli_stmt_fetch: ".$RESULT;
 
                         if ($RESULT)
                         {
