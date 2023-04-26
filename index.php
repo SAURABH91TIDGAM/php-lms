@@ -1,3 +1,3 @@
 <?php
 
-require "add_lead_form.php";
+require "login.php";
