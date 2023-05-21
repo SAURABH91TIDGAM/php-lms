@@ -181,6 +181,7 @@ else{
                                                     <td><button><a href='delete.php?delete_id=$id'>Delete</a></button></td>
                                             </tr>
                                             ";
+
                }?>
 
                </tbody>
